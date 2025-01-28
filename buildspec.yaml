@@ -15,4 +15,4 @@ artifacts:
   files:
     - build/**/* 
     - scripts/**/*
-    - appspec.yml
+    - appspec.yaml
