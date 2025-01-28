@@ -1,18 +1,41 @@
 version: 0.2
+
+env:
+  variables:
+    NODE_ENV: production
+
 phases:
   pre_build:
     commands:
-      - echo Instalando dependencias
+      - echo ">>> Iniciando pré-build em $(date)"
+      - echo ">>> Instalando dependências"
       - npm install
+
   build:
     commands:
-      - echo Build iniciado em `date`
+      - echo ">>> Build iniciado em $(date)"
       - npm run build
+
   post_build:
     commands:
-      - echo Build finalizado em `date`
+      - echo ">>> Build finalizado em $(date)"
+      - echo ">>> Arquivos gerados:"
+      - ls -R build || echo "Nenhum arquivo encontrado no diretório 'build'"
+
 artifacts:
   files:
     - build/**/* 
     - scripts/**/*
     - appspec.yaml
+  discard-paths: no
+  base-directory: build
+
+cache:
+  paths:
+    - node_modules/**/*
+
+reports:
+  build-report:
+    files:
+      - '**/*.log'
+    base-directory: build/logs
