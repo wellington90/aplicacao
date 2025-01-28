@@ -1,20 +1,26 @@
 version: 0.2
+
 phases:
+  install:
+    commands:
+      - echo "Instalando dependências..."
+      - npm install
   pre_build:
     commands:
-      - echo Instalando dependencias
-      - npm install
+      - echo "Preparando o ambiente..."
   build:
     commands:
-      - echo Build iniciado em `date`
+      - echo "Build iniciado em $(date)"
       - npm run build
   post_build:
     commands:
-      - echo Build finalizado em `date`
+      - echo "Build finalizado em $(date)"
 artifacts:
   files:
-    - build/**/* 
-    - scripts/**/*
-    - appspec.yml
+    - "build/**/*"
+    - "scripts/**/*"
+    - "appspec.yml"
+  discard-paths: no
 
 
+  
