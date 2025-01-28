@@ -15,6 +15,6 @@ artifacts:
   files:
     - build/**/* 
     - scripts/**/*
-    - appspec.yaml
+    - appspec.yml
 
 
